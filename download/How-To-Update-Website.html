@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>How to Put the New Peliton Website Online</title>
+<style>
+  :root{ --ink:#11141a; --accent:#3c8a1a; --accent2:#54b22e; --lime:#63ce31; --paper:#ffffff; --soft:#f3f6f1; }
+  *{box-sizing:border-box}
+  body{font-family:-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;color:var(--ink);margin:0;background:#fff;line-height:1.5;font-size:15px}
+  .wrap{max-width:820px;margin:0 auto;padding:0 26px}
+  /* Header */
+  .top{background:var(--ink);color:#fff;padding:26px 0}
+  .top .wrap{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+  .badge{background:var(--accent);color:#fff;font-weight:800;border-radius:10px;padding:8px 12px;font-size:.8rem;letter-spacing:.5px}
+  .top h1{font-size:1.7rem;margin:0;line-height:1.15}
+  .top p{margin:4px 0 0;color:#cdd6e2;font-size:.95rem}
+  /* Intro */
+  .lead{background:var(--soft);border-left:6px solid var(--accent);padding:16px 20px;margin:26px 0;border-radius:0 10px 10px 0}
+  .lead b{color:var(--accent)}
+  h2{font-size:1.15rem;margin:26px 0 10px;border-bottom:2px solid #eee;padding-bottom:6px}
+  /* Need box */
+  .need{display:flex;gap:18px;flex-wrap:wrap;margin:14px 0}
+  .need .col{flex:1;min-width:240px;background:#fff;border:1px solid #e6e9e4;border-radius:12px;padding:14px 16px}
+  .need .col b{display:block;margin-bottom:4px}
+  .need .col span{color:#555;font-size:.92rem}
+  /* Download button */
+  .dl{display:block;text-align:center;background:var(--accent);color:#fff;text-decoration:none;font-weight:800;font-size:1.15rem;padding:16px 18px;border-radius:12px;margin:18px 0}
+  .dl small{display:block;font-weight:500;font-size:.8rem;opacity:.9;margin-top:4px;word-break:break-all}
+  /* Steps */
+  ol.steps{list-style:none;counter-reset:s;padding:0;margin:0}
+  ol.steps>li{counter-increment:s;position:relative;padding:14px 0 14px 56px;border-bottom:1px solid #eef0ec}
+  ol.steps>li::before{content:counter(s);position:absolute;left:0;top:12px;width:38px;height:38px;background:var(--accent);color:#fff;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:1.1rem}
+  ol.steps>li>b{font-size:1.05rem}
+  ol.steps>li .d{color:#444;margin-top:3px}
+  ol.steps>li .d b{font-size:inherit}
+  ol.steps>li .note b{font-size:inherit}
+  .tag{display:inline-block;background:var(--lime);color:#11341a;font-weight:700;font-size:.72rem;border-radius:6px;padding:2px 7px;margin-left:6px;vertical-align:middle}
+  .key{background:#eef4ea;border:1px solid #d5e3cd;border-radius:6px;padding:1px 7px;font-weight:700;white-space:nowrap}
+  /* Safety / undo */
+  .safe{background:#fff8e6;border:1px solid #f0d98a;border-radius:12px;padding:16px 20px;margin:22px 0}
+  .safe b{color:#8a6d00}
+  /* Help */
+  .help{background:var(--ink);color:#fff;border-radius:14px;padding:20px 24px;margin:26px 0;text-align:center}
+  .help b{font-size:1.1rem}
+  .help a{color:var(--lime);text-decoration:none;font-weight:700}
+  .small{color:#666;font-size:.85rem}
+  .note{background:#f3f6f1;border-radius:10px;padding:12px 16px;margin:10px 0;font-size:.92rem;color:#3a4030}
+  @media print{ body{font-size:12.5px} .dl{font-size:1rem} .top{padding:20px 0} a{color:inherit} }
+</style>
+</head>
+<body>
+
+<div class="top"><div class="wrap">
+  <span class="badge">PELITON</span>
+  <div>
+    <h1>How to Put Your New Website Online</h1>
+    <p>A simple, step-by-step guide. Takes about 15 minutes. No tech skills needed.</p>
+  </div>
+</div></div>
+
+<div class="wrap">
+
+  <div class="lead">
+    Your new website is one file. You will <b>download it</b>, then <b>upload it</b> to where your website lives, and that's it.
+    Just do the steps in order, from 1 to 8. You can't break anything — Step 4 makes a backup first.
+  </div>
+
+  <h2>Before you start, you need two things</h2>
+  <div class="need">
+    <div class="col"><b>1. Your website login</b><span>This is the login for your <b>hosting company</b> — the company you pay to keep peliton.com online. The screen you need is called <b>“File Manager”</b> (sometimes “cPanel”).
+    <br><br>Don't know it? Call your hosting company and say: <i>“I need to log in to File Manager for peliton.com.”</i></span></div>
+    <div class="col"><b>2. A computer with internet</b><span>A regular Windows or Mac computer. (Not a phone — uploading is much easier on a computer.)</span></div>
+  </div>
+
+  <h2>Get the new website</h2>
+  <a class="dl" href="https://github.com/AIRSTIK/peliton-preview/raw/main/download/peliton-website-files.zip">⬇ Click here to download the new website
+    <small>https://github.com/AIRSTIK/peliton-preview/raw/main/download/peliton-website-files.zip</small></a>
+  <p class="small">This saves one file called <b>peliton-website-files.zip</b> to your Downloads folder. <b>Do not open it or change it.</b> The pictures are already inside — you don't need anything else.</p>
+
+  <h2>The 8 steps</h2>
+  <ol class="steps">
+    <li><b>Download the new website.</b>
+      <div class="d">Click the green button above. A file named <b>peliton-website-files.zip</b> goes into your Downloads. Leave it as-is.</div></li>
+
+    <li><b>Log in to your File Manager.</b>
+      <div class="d">Go to your hosting company's website and log in. Click the button called <b>File Manager</b>. (Not sure where it is? Call your hosting company and ask them to get you to “File Manager for peliton.com.”)</div></li>
+
+    <li><b>Open the <span class="key">public_html</span> folder.</b>
+      <div class="d">This is the folder where your website lives. Double-click it to open it. <span class="small">(On a few hosts it's called <b>www</b> or <b>htdocs</b> instead — same thing.)</span></div></li>
+
+    <li><b>Make a backup first.</b> <span class="tag">SAFETY — don't skip</span>
+      <div class="d">Inside that folder, select everything (look for <b>Select All</b>). Click <b>Compress</b> → make a <b>.zip</b> → then <b>download</b> that zip to your computer and keep it somewhere safe. This is your “undo” button. Now nothing can be lost.</div></li>
+
+    <li><b>Upload the new website.</b>
+      <div class="d">Click the <b>Upload</b> button. Choose the <b>peliton-website-files.zip</b> you downloaded in Step 1. Wait until it says <b>100% / Complete</b>, then go back to the <span class="key">public_html</span> folder.</div></li>
+
+    <li><b>Unzip it on the server.</b>
+      <div class="d">Right-click the <b>peliton-website-files.zip</b> you just uploaded and choose <b>Extract</b>. If it asks <b>“Overwrite?”</b> click <b>Yes</b> — that's what replaces the old site with the new one. When it's done, you can delete the leftover <b>.zip</b> to keep things tidy.
+      <div class="note"><b>No “Extract” button on your screen?</b> No problem. On your own computer, right-click the downloaded zip → <b>Extract All</b> to get 12 files. Then in Step 5 upload <b>all 12 files</b> instead of the zip, and click <b>Yes/Overwrite</b> if asked. Skip this step 6.</div></div></li>
+
+    <li><b>Look at your new website.</b>
+      <div class="d">Go to <b>peliton.com</b>. Hold <span class="key">Ctrl</span>+<span class="key">Shift</span>+<span class="key">R</span> (Windows) or <span class="key">Cmd</span>+<span class="key">Shift</span>+<span class="key">R</span> (Mac) to force a fresh load. The new design should appear.</div></li>
+
+    <li><b>Check it on your phone too.</b>
+      <div class="d">Open peliton.com on your phone. It's built to look great on phones, tablets, and computers.</div></li>
+  </ol>
+
+  <div class="safe">
+    <b>Changed your mind, or something looks off?</b> You can put the old site back anytime.
+    Just upload the backup zip you made in <b>Step 4</b> the same way, extract it, and overwrite. Your old website is back. Nothing here is permanent.
+  </div>
+
+  <div class="help">
+    <b>Stuck on any step? I'm happy to help.</b><br>
+    Joshua &nbsp;·&nbsp; <a href="tel:+19126043318">(912) 604-3318</a> &nbsp;·&nbsp; <a href="mailto:joshua@airstik.com">joshua@airstik.com</a><br>
+    <span class="small" style="color:#cdd6e2">You can also hand this sheet to whoever manages your website — it has everything they need.</span>
+  </div>
+
+  <p class="small" style="text-align:center;margin:24px 0 30px">Peliton Plastics &nbsp;·&nbsp; 130 Blanchard St, Valdosta, GA 31601 &nbsp;·&nbsp; (229) 247-1269 &nbsp;·&nbsp; peliton.com</p>
+
+</div>
+</body>
+</html>
