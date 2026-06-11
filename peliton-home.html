@@ -536,60 +536,63 @@ header.site.scrolled{box-shadow:0 10px 30px -16px rgba(17,20,26,.45)}
   }
   window.addEventListener('scroll',onScroll,{passive:true}); onScroll();
 
-  /* Count-up for stats */
+  /* ---- Count-up for stats: capture final value ONCE, run ONCE, never read a mid-animation number as the target ---- */
+  var statEls = Array.prototype.slice.call(document.querySelectorAll('.stats .s b'));
+  statEls.forEach(function(el){ if(el.getAttribute('data-final')===null) el.setAttribute('data-final', el.textContent.trim()); });
   function countUp(el){
-    var raw=el.textContent.trim();
-    if(/[–—-]/.test(raw)) return;            // skip ranges like 55–650
-    var m=raw.match(/^([^\d]*)([\d,]+)(.*)$/); if(!m) return;
-    var prefix=m[1], digits=m[2], suffix=m[3];
-    var target=parseInt(digits.replace(/,/g,''),10); if(isNaN(target)) return;
-    var comma=digits.indexOf(',')>-1, dur=1500, start=null;
+    if(el.getAttribute('data-counted')) return;            // guard: only ever run once
+    el.setAttribute('data-counted','1');
+    var raw=(el.getAttribute('data-final')||el.textContent).trim();
+    if(/[–—\-]/.test(raw)){ el.textContent=raw; return; }   // ranges like 55-650: leave exact
+    var m=raw.match(/^([^\d]*)([\d,]+)(.*)$/); if(!m){ el.textContent=raw; return; }
+    var prefix=m[1], suffix=m[3], comma=m[2].indexOf(',')>-1;
+    var target=parseInt(m[2].replace(/,/g,''),10); if(isNaN(target)){ el.textContent=raw; return; }
+    var dur=1500, start=null;
     function fmt(n){return comma?n.toLocaleString('en-US'):String(n);}
     function tick(ts){ if(start===null)start=ts; var p=Math.min((ts-start)/dur,1);
       var e=1-Math.pow(1-p,3); el.textContent=prefix+fmt(Math.round(target*e))+suffix;
-      if(p<1)requestAnimationFrame(tick); else el.textContent=prefix+fmt(target)+suffix; }
+      if(p<1)requestAnimationFrame(tick); else el.textContent=raw; }   // always land EXACTLY on the real final value
     requestAnimationFrame(tick);
   }
+  function fireStats(){ statEls.forEach(countUp); }
 
-  /* Reveal targets */
+  /* ---- Scroll reveal ---- */
   var SEL=['.trust .t','.usaband','.svc','.card','.eqcard','.matblock','.nitem','.ownercard','.step','.gitem','.abadge','.valprops','.padex','section h2','.stats .s','.matrow'];
   var nodes=[];
   SEL.forEach(function(s){ Array.prototype.forEach.call(document.querySelectorAll(s),function(n){ if(nodes.indexOf(n)<0)nodes.push(n); }); });
   /* drop nodes whose ancestor is already a reveal target */
   nodes=nodes.filter(function(n){ var p=n.parentElement; while(p){ if(nodes.indexOf(p)>=0) return false; p=p.parentElement; } return true; });
 
-  if(RM){ return; }                                    // respect reduced motion
+  if(RM){ return; }   // reduced motion: stats already show their correct final values; skip animation
 
   nodes.forEach(function(n){ n.classList.add('reveal'); });
-
   function reveal(n){
-    /* light stagger within sibling group */
+    /* light stagger within sibling group (visual only — never touches the counters) */
     var sibs=n.parentElement?Array.prototype.filter.call(n.parentElement.children,function(c){return c.classList&&c.classList.contains('reveal');}):[];
     var i=sibs.indexOf(n); if(i>0)n.style.transitionDelay=Math.min(i,6)*70+'ms';
     n.classList.add('in');
-    if(n.classList.contains('stats')|| n.querySelector){
-      n.querySelectorAll('.s b').forEach&&n.querySelectorAll('.s b').forEach(countUp);
-    }
   }
-
   if('IntersectionObserver' in window){
     var io=new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ reveal(e.target); io.unobserve(e.target); } }); },{threshold:.12,rootMargin:'0px 0px -8% 0px'});
     nodes.forEach(function(n){ io.observe(n); });
-  } else {
-    nodes.forEach(reveal);
-  }
+  } else { nodes.forEach(reveal); }
 
-  /* trigger stat count-up when the stats row reveals */
+  /* ---- Trigger the stat count-up exactly once (separate from reveal, so it can never double-fire) ---- */
   var statsRow=document.querySelector('.stats');
   if(statsRow){
     if('IntersectionObserver' in window){
-      var io2=new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ e.target.querySelectorAll('.s b').forEach(countUp); io2.unobserve(e.target);} }); },{threshold:.3});
+      var io2=new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ fireStats(); io2.disconnect(); } }); },{threshold:0,rootMargin:'0px 0px -10% 0px'});
       io2.observe(statsRow);
-    } else { statsRow.querySelectorAll('.s b').forEach(countUp); }
+      var r=statsRow.getBoundingClientRect();   // already on screen at load? fire now
+      if(r.top < (window.innerHeight||document.documentElement.clientHeight) && r.bottom > 0) fireStats();
+    } else { fireStats(); }
   }
 
-  /* safety net: reveal everything after 2.4s in case observer misses */
-  setTimeout(function(){ nodes.forEach(function(n){ n.classList.add('in'); }); },2400);
+  /* safety net: after 2.4s force-reveal everything AND make sure every stat shows its true final value */
+  setTimeout(function(){
+    nodes.forEach(function(n){ n.classList.add('in'); });
+    statEls.forEach(function(el){ if(!el.getAttribute('data-counted')){ el.setAttribute('data-counted','1'); var f=el.getAttribute('data-final'); if(f) el.textContent=f; } });
+  },2400);
 })();
 </script>
 
