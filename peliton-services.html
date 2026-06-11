@@ -75,6 +75,20 @@ footer.site .legal{border-top:1px solid rgba(255,255,255,.12);padding-top:1.2rem
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"Service","serviceType":"Custom Plastic Injection Molding","provider":{"@type":"LocalBusiness","name":"Peliton Plastics","telephone":"+1-229-247-1269","address":{"@type":"PostalAddress","streetAddress":"130 Blanchard St","addressLocality":"Valdosta","addressRegion":"GA","postalCode":"31601","addressCountry":"US"}},"areaServed":"US","hasOfferCatalog":{"@type":"OfferCatalog","name":"Manufacturing Capabilities","itemListElement":[{"@type":"Offer","itemOffered":{"@type":"Service","name":"Plastic Injection Molding"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Mold Making and Repair"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Assembly and Fulfillment"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"Pad and Screen Printing"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"CNC Machining and Tooling"}},{"@type":"Offer","itemOffered":{"@type":"Service","name":"3D Printing and Prototyping"}}]}}
 </script>
+<style>
+.ndrop{position:relative}
+.ndrop>.ntop{cursor:pointer}
+.ndrop>.ntop.active{color:var(--accent)}
+.ndrop .nmenu{position:absolute;top:100%;left:0;background:#fff;border:1px solid var(--line);border-radius:10px;box-shadow:0 18px 40px -22px rgba(20,30,50,.4);padding:.4rem;min-width:190px;display:none;flex-direction:column;z-index:60}
+.ndrop:hover .nmenu{display:flex}
+.ndrop .nmenu a{padding:.5rem .8rem;border-radius:7px;font-size:.92rem;white-space:nowrap}
+.ndrop .nmenu a:hover{background:var(--bg);color:var(--accent)}
+@media(max-width:1000px){
+  nav.main.open .ndrop{width:100%}
+  nav.main.open .ndrop .nmenu{display:flex;position:static;border:0;box-shadow:none;padding:.2rem 0 .2rem 1rem;min-width:0}
+  nav.main.open .ndrop .nmenu a{border-bottom:0;padding:.4rem 0}
+}
+</style>
 </head>
 <body>
 
@@ -87,10 +101,22 @@ footer.site .legal{border-top:1px solid rgba(255,255,255,.12);padding-top:1.2rem
   <a class="brand" href="peliton-home.html"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAANMAAACVAgMAAAC/aCc7AAAADFBMVEVjzjGt55ze99b3//d7NNpaAAAEY0lEQVQY0+3PMY7kRBQA0G8btaVx4JBggk4IkXwBNDbiABAwCXsDCGYvAPYRNpgjbLTJXGB3XLspiW9AS5BAZAkH7qXsT/0q211lm3L1MAwg7Ze6/avqv6r/AT7Eh3iC8L7tb882dyiiz85CPqo4i+1wjOP5L1E0zjOhHq49JoZyfCxCM9zUDGHlgsK5ql1USZW/ZgAfD4o7oFjU9ZlMPffBRFU7a5a5PNWeVqnjYIidtgrdBouwn/eLs62VyLEy1qrFDRToQw1jiijsao+ZuaEGY3ZVNovHKSoriudPgS9VbVVps9hyUCtjb6uwhXXV2FTC/kK1NnUPD1D+SvvepgqpwW9efWXctDlXnAFcIPaZthdsqk8BIllUaO/LjdqingOUsqjT3t9UDBLEWVW6qcDDMabR1OOVTUWTaocdXy2ZTaWTwoM+FhY2hVpkWoNoQ4GujlrLnU3FOGO7IeWOY5lRu46FP2s5syDfUCw/5banQlNFU2odKzZUAeWYHmwqMVQG0Sm1RGoosTFM1trQqaNR+eX2U2Cgnnb8zalmqpNbl4hHO/INxcEtgkdQraOKDFU7qvgR1MFR7Q1VOarUUMWDlCOC/EGq1FHviDzjqc5R+Ybijip4BNU6qshQtaOKn1DtDcUcVfqvqcJRlYZyRIB/X/WOyDNUBw+N6+uvwf3VU8tcKcT6v628J1T+EymK4B9Ruz6T3+/er6ld+XKouxjqAGJEhthRmiO2p7nEgQiJ8SDrPh/vk6t38hQ8qsoWKkJ5mVh+oeoG9aNYMZnJnmaqVJeJ5ZeqblA/qeqcjvlcBfJzoLpc9ToolD14OFxuKvXh9C3V7Zriw6VYzVSKuqYJNdVTcryhy0xVqvNsun1UHT0DiRg1oMtMRT8xEBPL/k5XDR1lopViEFJBSA8HtNojHkRdHeqKmsJCXAgi6RaqlTXidwhMJZpn1AolpgqplUgpNlO5UtfXCyWPhWpWVKqUjBUlsnZdvbUrvq7ejSo7R719YqV2VlW7rphFReuqHNXV7UwJ0NBfva4KGkk8+pupqDlZs6KEKHKxTVxXDcjCVcU96k7MVstEU4g+rRLEaqHwGRUnKINPKkB1B2Y09lKJ6MZkrnK1DauKqyI1pK6S06VLVQOopJiU3IBI7jZL9YfYrgBSdelJlaQ8qdhS/S6fULfWmqLm1H8PS1WX2FKqjk8qlIrGO6ypXZ9R6t2p7xT5e1pf4C8wj1h2dW48sorFaDEbFh8Bd1VYTeqzM1Q9Ke6sWNBoynUuBjxmuz7zyhcxMg43BVwe3VQi2sSWVIANIBZO6gev3WdvSMXIvSaqwB5qrtfAU7gSc/E9uw/q4LClRBPiPaHE/UIl8EnQAWwrJtQzvseMVArgidE21VF0eYk8RD4oyJFtzkW//JbDTT+qHR6c1GsBIB/mAghrJyXLU1J7du/XgZt6E/C4+B4w4zF20IaVk0qRh9hCXvAAG8ixcFJhcwX5C0gyLiSER/g/xJ8Gl/A/3QM+5gAAAABJRU5ErkJggg==" alt="Peliton Plastics logo"></a>
   <nav class="main" id="nav">
     <a href="peliton-home.html">Home</a>
-    <a href="peliton-services.html" class="active">Capabilities</a>
+    <div class="ndrop"><a href="peliton-services.html" class="ntop active">Capabilities &#9662;</a>
+      <div class="nmenu">
+        <a href="peliton-services.html" class="active">Overview</a>
+        <a href="peliton-equipment.html">Equipment</a>
+        <a href="peliton-materials.html">Materials</a>
+        <a href="peliton-howmade.html">How It&#39;s Made</a>
+      </div>
+    </div>
     <a href="peliton-printing.html">Printing</a>
     <a href="peliton-inventors.html">For Inventors</a>
-    <a href="peliton-about.html">About</a>
+    <div class="ndrop"><a href="peliton-about.html" class="ntop">About &#9662;</a>
+      <div class="nmenu">
+        <a href="peliton-about.html">Our Story</a>
+        <a href="peliton-news.html">News</a>
+      </div>
+    </div>
     <a href="peliton-gallery.html">Work</a>
     <a href="peliton-contact.html">Contact</a>
   </nav>
@@ -231,7 +257,7 @@ footer.site .legal{border-top:1px solid rgba(255,255,255,.12);padding-top:1.2rem
       <a class="brand" href="peliton-home.html" style="margin-bottom:1rem"><span class="bt" style="color:#fff">Peliton<small>Plastics · Valdosta, GA</small></span></a>
       <p style="color:#aeb8c6;max-width:280px">USA-made custom plastic injection molding &amp; contract manufacturing since 1996. Molded, finished and shipped under one roof.</p>
     </div>
-    <div><h4>Explore</h4><a href="peliton-home.html">Home</a><a href="peliton-services.html">Capabilities</a><a href="peliton-printing.html">Printing</a><a href="peliton-inventors.html">For Inventors</a><a href="peliton-about.html">About Us</a><a href="peliton-gallery.html">Our Work</a><a href="peliton-contact.html">Contact</a><a href="peliton-privacy.html">Privacy Policy</a></div>
+    <div><h4>Explore</h4><a href="peliton-home.html">Home</a><a href="peliton-services.html">Capabilities</a><a href="peliton-equipment.html">Equipment</a><a href="peliton-materials.html">Materials</a><a href="peliton-howmade.html">How It&#39;s Made</a><a href="peliton-printing.html">Printing</a><a href="peliton-inventors.html">For Inventors</a><a href="peliton-about.html">About</a><a href="peliton-news.html">News</a><a href="peliton-gallery.html">Our Work</a><a href="peliton-contact.html">Contact</a><a href="peliton-privacy.html">Privacy</a></div>
     <div><h4>Services</h4><a href="peliton-services.html">Injection Molding</a><a href="peliton-services.html">Mold Making &amp; Repair</a><a href="peliton-services.html">Assembly &amp; Fulfillment</a><a href="peliton-services.html">Pad &amp; Screen Printing</a><a href="peliton-services.html">Machine Shop</a></div>
     <div><h4>Visit / Call</h4><address class="fcontact"><b>Peliton Plastics</b><br>130 Blanchard St<br>Valdosta, GA 31601<br><br>Phone: <a href="tel:+12292471269" style="display:inline">(229) 247-1269</a><br>Fax: (229) 247-9239<br><a href="mailto:ed@peliton.com" style="display:inline">ed@peliton.com</a></address></div>
   </div>
